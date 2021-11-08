@@ -1,15 +1,34 @@
 package model;
 
+import java.util.List;
+
 public class Song {
     private String name;
-    private int id;
+    private List<Song> listSong;
+
+
+    public List<Song> getSongs() {
+        return listSong;
+    }
+
+    public void setSongs(Song songs) {
+        this.listSong.add(songs);
+    }
 
     public Song() {
     }
 
-    public Song(String name, int id) {
+    public Song(List<Song> listSong) {
+        this.listSong = listSong;
+    }
+
+    public Song(String name, List<Song> listSong) {
         this.name = name;
-        this.id = id;
+        this.listSong = listSong;
+    }
+
+    public Song(String name) {
+        this.name = name;
     }
 
     public String getName() {
@@ -20,19 +39,9 @@ public class Song {
         this.name = name;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     @Override
     public String toString() {
-        return "Song{" +
-                "name='" + name + '\'' +
-                ", id=" + id +
+        return "Songname: " + name +
                 '}';
     }
 }

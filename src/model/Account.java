@@ -1,27 +1,21 @@
 package model;
 
-public class Account {
-    private int id;
-    private String userName;
-    private int password;
-    private String album;
+import java.util.ArrayList;
+import java.util.List;
 
-    public Account() {
+public class Account {
+    private String userName;
+    private String password;
+    private List<Album> listAlbum;
+
+
+    public Account(String huy, String s) {
     }
 
-    public Account(int id, String userName, int password, String album) {
-        this.id = id;
+    public Account(String userName, String password, List<Album> listAlbum) {
         this.userName = userName;
         this.password = password;
-        this.album = album;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+        this.listAlbum = listAlbum;
     }
 
     public String getUserName() {
@@ -32,29 +26,49 @@ public class Account {
         this.userName = userName;
     }
 
-    public int getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(int password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
-    public String getAlbum() {
-        return album;
+    public List<Album> getListAlbum() {
+        return listAlbum;
     }
 
-    public void setAlbum(String album) {
-        this.album = album;
+    public void setListAlbum(List<Album> listAlbum) {
+        this.listAlbum = listAlbum;
     }
 
     @Override
     public String toString() {
-        return "Account{" +
-                "id=" + id +
+        return "AccountManage{" +
                 ", userName='" + userName + '\'' +
-                ", password=" + password +
-                ", album='" + album + '\'' +
+                ", password='" + password + '\'' +
+                ", listAlbum=" + listAlbum +
                 '}';
     }
+
+
+    public void addAlbum(String name){
+
+    }
+
+    public void deleteAlbum(String name){
+
+    }
+
+    public void editAlbum(String name , String newName){
+
+    }
+    public void printAlbum(){
+
+    }
+
+
+//    public Album findByName(String name) {
+//
+//    }
 }
