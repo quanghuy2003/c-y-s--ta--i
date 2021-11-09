@@ -57,6 +57,8 @@ public class Account implements General<Album> {
     @Override
     public void add(Album album) {
         listAlbum.add(album);
+
+        display();
     }
 
     @Override
@@ -80,6 +82,7 @@ public class Account implements General<Album> {
     @Override
     public void display() {
         for (Album album : listAlbum) {
+//        for (Album album : listAlbum) {
             System.out.println(album);
         }
     }

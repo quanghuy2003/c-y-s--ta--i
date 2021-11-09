@@ -26,8 +26,11 @@ public class Main {
         ImportExport importExport = new ImportExport();
         AccountManage accountManage = new AccountManage(accountInManage);
 
-        Account account = null;
+        Account account=new Account();
         int choice;
+        int choice1;
+        int choice2;
+        int choice3;
         do {
             System.out.println(ANSI_BLUE+"+_+_+_+_+_+_+_+_+_+_+_+_+_+MENU+_+_+_+_+_+_+_+_+_+_+_+_+_+");
             System.out.println("||              1: Đăng ký tài khoản:                   ||");
@@ -42,7 +45,6 @@ public class Main {
                     account = new Account(importExport.NewUserName(), importExport.NewPass(), albumInAccount);
                     if (accountManage.getListAccount().size() == 0) {
                         if (!account.getUserName().equals(" ") && !account.getPassword().equals(" ")) {
-
                             accountManage.add(account);
                             System.out.println(Do+"Đăng ký tài khoản thành công!");
                         } else {
@@ -74,14 +76,16 @@ public class Main {
                             System.out.println("||                            0. đăng xuất                                ||");
                             System.out.println("+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_++_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+"+ANSI_RESET);
                             System.out.println(Vang+"                         nhập lựa chọn của bạn: "+ANSI_RESET);
-                            choice = scanner.nextInt();
-                            if (choice != 0) {
-                                switch (choice) {
-                                    case 1 -> {
+                            choice1 = scanner.nextInt();
 
+                                switch (choice1) {
+                                    case 1 -> {
+                                        Album album=new Album("rên",songInAlbum,account);
+                                        account.add(album);
+                                        System.out.println("thêm thành công");
                                     }
                                 }
-                            }
+
                         } while (choice != 0);
                     }
                 }

@@ -47,7 +47,6 @@ public class Album {
         return "Album{" +
                 "name='" + name + '\'' +
                 ", listSong=" + listSong +
-                ", account=" + account +
                 '}';
     }
 
