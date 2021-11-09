@@ -5,16 +5,15 @@ import java.util.List;
 
 public class Album {
     private String name;
-    private ArrayList<Song> songs;
-    private List<Album> listSong;
+    private List<Song> listSong;
+//    private List<Album> listSong;
     private Account account;
 
     public Album() {
     }
 
-    public Album(String name, ArrayList<Song> songs, List<Album> listSong, Account account) {
+    public Album(String name, List<Song> listSong, Account account) {
         this.name = name;
-        this.songs = songs;
         this.listSong = listSong;
         this.account = account;
     }
@@ -27,19 +26,11 @@ public class Album {
         this.name = name;
     }
 
-    public ArrayList<Song> getSongs() {
-        return songs;
-    }
-
-    public void setSongs(ArrayList<Song> songs) {
-        this.songs = songs;
-    }
-
-    public List<Album> getListSong() {
+    public List<Song> getListSong() {
         return listSong;
     }
 
-    public void setListSong(List<Album> listSong) {
+    public void setListSong(List<Song> listSong) {
         this.listSong = listSong;
     }
 
@@ -55,32 +46,31 @@ public class Album {
     public String toString() {
         return "Album{" +
                 "name='" + name + '\'' +
-                ", songs=" + songs +
                 ", listSong=" + listSong +
                 ", account=" + account +
                 '}';
     }
 
     private void addSong(Song song){
-        songs.add(song);
+        listSong.add(song);
     }
 
     private void deleteSong(String name){
         if (findSongs(name) != -1) {
-            songs.remove(findSongs(name));
+            listSong.remove(findSongs(name));
         } else {
             System.out.println("mục này không có sẵn");
         }
     }
     private void printSong(String name){
-        for (Song song : songs
+        for (Song song : listSong
         ) {
             System.out.println(song);
         }
     }
     public int findSongs(String name){
-        for (int i = 0; i < songs.size(); i++) {
-            if (songs.get(i).getName().equals(name)) {
+        for (int i = 0; i < listSong.size(); i++) {
+            if (listSong.get(i).getName().equals(name)) {
                 return i;
             }
         }

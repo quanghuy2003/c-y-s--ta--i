@@ -1,15 +1,17 @@
 package model;
 
+import service.General;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Account {
+public class Account implements General<Album> {
     private String userName;
     private String password;
     private List<Album> listAlbum;
 
 
-    public Account(String huy, String s) {
+    public Account() {
     }
 
     public Account(String userName, String password, List<Album> listAlbum) {
@@ -52,23 +54,48 @@ public class Account {
     }
 
 
-    public void addAlbum(String name){
-
+    @Override
+    public void add(Album album) {
+        listAlbum.add(album);
     }
 
-    public void deleteAlbum(String name){
-
+    @Override
+    public void delete(String name) {
+        if (findByName(name) != -1) {
+            listAlbum.remove(findByName(name));
+        } else {
+            System.out.println("This item is not available");
+        }
     }
 
-    public void editAlbum(String name , String newName){
-
+    @Override
+    public void update(String name, String newName) {
+        if (findByName(name) != -1) {
+            listAlbum.get(findByName(name)).setName(newName);
+        } else {
+            System.out.println("Album này không có sẵn");
+        }
     }
-    public void printAlbum(){
 
+    @Override
+    public void display() {
+        for (Album album : listAlbum) {
+            System.out.println(album);
+        }
     }
 
+    @Override
+    public int findByName(String name) {
+        for (int i = 0; i < listAlbum.size(); i++) {
+            if (listAlbum.get(i).getName().equals(name)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+}
 
 //    public Album findByName(String name) {
 //
 //    }
-}
+
