@@ -55,7 +55,7 @@ public class Album {
         listSong.add(song);
     }
 
-    private void deleteSong(String name) {
+    public void deleteSong(String name) {
         if (findSongs(name) != -1) {
             listSong.remove(findSongs(name));
         } else {
@@ -63,7 +63,7 @@ public class Album {
         }
     }
 
-    private void update(String name, String newName) {
+     public void update(String name, String newName) {
         if (findSongs(name) != 1) {
             listSong.get(findSongs(name)).setName(newName);
         } else {
@@ -71,7 +71,7 @@ public class Album {
         }
     }
 
-    private void printSong(String name) {
+    public void printSong(String name) {
         for (Song song : listSong
         ) {
             System.out.println(song);

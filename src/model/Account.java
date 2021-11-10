@@ -57,8 +57,6 @@ public class Account implements General<Album> {
     @Override
     public void add(Album album) {
         listAlbum.add(album);
-
-        display();
     }
 
     @Override

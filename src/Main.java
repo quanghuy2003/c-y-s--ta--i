@@ -29,7 +29,6 @@ public class Main {
             System.out.println(ANSI_BLUE + "+_+_+_+_+_+_+_+_+_+_+_+_+_+MENU+_+_+_+_+_+_+_+_+_+_+_+_+_+");
             System.out.println("||              1: Đăng ký tài khoản:                   ||");
             System.out.println("||                  2: Đăng nhập:                       ||");
-            System.out.println("||                 3: Đổi mật khẩu                      ||");
             System.out.println("||                     0: Exit                          ||");
             System.out.println("+_+_+_+_+_+_+_+_++_+_+_+_+_+_+_+_++_+_+_+_+_+_+_+_++_+_+_+" + ANSI_RESET);
             System.out.println(Vang + "                nhập lựa chọn của bạn" + ANSI_RESET);
@@ -37,7 +36,7 @@ public class Main {
             switch (choice) {
                 case 1 -> {
 
-                   Account account = new Account(importExport.NewUserName(), importExport.NewPass(), albumInAccount);
+                    Account account = new Account(importExport.NewUserName(), importExport.NewPass(), albumInAccount);
                     if (AccountManage.getInstance().getListAccount().size() == 0) {
                         if (!account.getUserName().equals(" ") && !account.getPassword().equals(" ")) {
                             AccountManage.getInstance().add(account);
@@ -71,9 +70,8 @@ public class Main {
                                 System.out.println("||                      6. thêm bài hát vào album                         ||");
                                 System.out.println("||                      7. xóa bài hát khỏi album                         ||");
                                 System.out.println("||                    8. sửa tên bài hát trong album                      ||");
-                                System.out.println("||                  9. hiển thị  bài hát trong album                      ||");
-                                System.out.println("||                          10: ghi từ file csv                           ||");
-                                System.out.println("||                          11: đọc từ file csv                           ||");
+                                System.out.println("||                          9: ghi từ file csv                           ||");
+                                System.out.println("||                          10: đọc từ file csv                           ||");
                                 System.out.println("||                            0. đăng xuất                                ||");
                                 System.out.println("+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_++_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+" + ANSI_RESET);
                                 System.out.println(Vang + "                         nhập lựa chọn của bạn: " + ANSI_RESET);
@@ -129,7 +127,7 @@ public class Main {
                                         System.out.println("nhập album bạn muốn tìm");
                                         scanner.nextLine();
                                         String findAlbum = scanner.nextLine();
-                                        System.out.println( AccountManage.getInstance().getListAccount().get(index3).findByName(findAlbum));
+                                        System.out.println(AccountManage.getInstance().getListAccount().get(index3).findByName(findAlbum));
 
                                     }
                                     case 5 -> {
@@ -168,57 +166,55 @@ public class Main {
                                                     currentAlbum.addSong(song);
                                                 } else System.out.println("thoát");
                                             }
-                                        } else System.out.println("ko tim thấy ab");
+                                        } else System.out.println("ko tim thấy album");
                                     }
                                     case 7 -> {
-                                        int indexDeleteSong = -1;
+                                        int indexDeleteAccount = -1;
+                                        System.out.println("album muốn xóa");
+                                        scanner.nextLine();
+                                        String nameAlbum = scanner.nextLine();
+
                                         for (int j = 0; j < AccountManage.getInstance().getListAccount().size(); j++) {
                                             if (AccountManage.getInstance().getListAccount().get(j).getUserName().equals(xyzName)) {
-                                                indexDeleteSong = j;
+                                                indexDeleteAccount = j;
                                             }
                                         }
+
+
+                                        Account currentAccount = AccountManage.getInstance().getListAccount().get(indexDeleteAccount);
+                                        int indexOfAlbumCurrentAccount = currentAccount.findByName(nameAlbum);
+                                        Album currentAlbum = currentAccount.getListAlbum().get(indexOfAlbumCurrentAccount);
                                         System.out.println("nhập tên bài hát muốn xóa");
-                                        scanner.nextLine();
-                                        String deleteSong = scanner.nextLine();
-                                        AccountManage.getInstance().getListAccount().get(indexDeleteSong).delete(deleteSong);
+                                        String deleteInSong = scanner.nextLine();
+                                        currentAlbum.deleteSong(deleteInSong);
                                     }
                                     case 8 -> {
                                         int indexUpdateNameSong = -1;
+                                        System.out.println("nhập vào album muốn sửa");
+                                        scanner.nextLine();
+                                        String updateNameSong = scanner.nextLine();
+
                                         for (int j = 0; j < AccountManage.getInstance().getListAccount().size(); j++) {
                                             if (AccountManage.getInstance().getListAccount().get(j).getUserName().equals(xyzName)) {
                                                 indexUpdateNameSong = j;
                                             }
                                         }
-                                        System.out.println("nhập tên bài hát muốn sửa");
-//                                        scanner.nextLine();
-                                        String updateNameSong =scanner.nextLine();
-                                        System.out.println("tên bài hát sau khi sửa");
-                                        String newNameSong=scanner.nextLine();
-                                        AccountManage.getInstance().getListAccount().get(indexUpdateNameSong).update(updateNameSong,newNameSong);
-                                    }
-                                    case 9 ->{
-                                        int indexDisplayAllSong = -1;
-                                        for (int j = 0; j < AccountManage.getInstance().getListAccount().size(); j++) {
-                                            if (AccountManage.getInstance().getListAccount().get(j).getUserName().equals(xyzName)) {
-                                                indexDisplayAllSong = j;
-                                            }
-                                        }
-                                        AccountManage.getInstance().getListAccount().get(indexDisplayAllSong).display();
-                                    }
-                                    case 10 ->{
-
+                                        Account currentAccount = AccountManage.getInstance().getListAccount().get(indexUpdateNameSong);
+                                        int indexOfAlbumCurrentAccount = currentAccount.findByName(updateNameSong);
+                                        Album currentAlbum = currentAccount.getListAlbum().get(indexOfAlbumCurrentAccount);
+                                        System.out.println("tên album muốn sửa");
+                                        String nameSong = scanner.nextLine();
+                                        System.out.println("bạn muốn sửa tên bài hát đó thành gì");
+                                        String updateInSong = scanner.nextLine();
+                                        currentAlbum.update(nameSong,updateInSong);
                                     }
                                 }
 
                             } while (choice1 != 0);
-                        }
-                        else System.out.println("đang nhập k thành");
+                        } else System.out.println("đang nhập k thành công");
                     }
                 }
             }
         } while (choice != 0);
-    }
-    private static void readFileAcc(){
-
     }
 }
