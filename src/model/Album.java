@@ -6,14 +6,17 @@ import java.util.List;
 public class Album {
     private String name;
     private List<Song> listSong;
-//    private List<Album> listSong;
+    //    private List<Album> listSong;
     private Account account;
 
 
     public Album(String name, List<Song> listSong) {
         this.name = name;
         this.listSong = listSong;
-
+    }
+    public Album(String name) {
+        this.name = name;
+        this.listSong = new ArrayList<>();
     }
 
     public String getName() {
@@ -48,24 +51,34 @@ public class Album {
                 '}';
     }
 
-    private void addSong(Song song){
+    public void addSong(Song song) {
         listSong.add(song);
     }
 
-    private void deleteSong(String name){
+    private void deleteSong(String name) {
         if (findSongs(name) != -1) {
             listSong.remove(findSongs(name));
         } else {
             System.out.println("mục này không có sẵn");
         }
     }
-    private void printSong(String name){
+
+    private void update(String name, String newName) {
+        if (findSongs(name) != 1) {
+            listSong.get(findSongs(name)).setName(newName);
+        } else {
+            System.out.println("bài hát không có sẵn");
+        }
+    }
+
+    private void printSong(String name) {
         for (Song song : listSong
         ) {
             System.out.println(song);
         }
     }
-    public int findSongs(String name){
+
+    public int findSongs(String name) {
         for (int i = 0; i < listSong.size(); i++) {
             if (listSong.get(i).getName().equals(name)) {
                 return i;

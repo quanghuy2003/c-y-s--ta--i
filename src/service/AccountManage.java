@@ -4,15 +4,20 @@ import model.Account;
 import model.Album;
 import model.Song;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AccountManage implements General<Account> {
-     List<Account> listAccount;
-     List<Album> listAlbum;
+     List<Account> listAccount = new ArrayList<Account>();
+     List<Album> listAlbum=new ArrayList<>();
+     private static final AccountManage instance = new AccountManage();
+     private AccountManage(){
+     }
+     public static AccountManage getInstance(){
+         return instance;
+     }
 
-    public AccountManage() {
 
-    }
 
     public AccountManage(List<Account> listAccount) {
         this.listAccount = listAccount;
@@ -47,7 +52,7 @@ public class AccountManage implements General<Account> {
 
     @Override
     public void display() {
-        for (Account account : this.listAccount) {
+        for (Account account : listAccount) {
             System.out.println(account);
         }
     }

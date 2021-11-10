@@ -93,7 +93,7 @@ public class ImportExport {
 //        tên đăng nhập mới
         System.out.println(Do + "nhập tên tài khoản người dùng mới:");
         System.out.println("lưu ý : tên là chữ cái hoặc số, không có kí tự đặc biệt");
-        System.out.println("không được để khoảng trắng");
+        System.out.println("ít nhất 8 ký tự");
         String newSongInAlbum = huy.nextLine();
         if (CreateAccount.nameLogin(newSongInAlbum)) {
             return newSongInAlbum;
@@ -105,6 +105,7 @@ public class ImportExport {
 //        mật khẩu mới
         System.out.println("nhập mật khẩu mới: ");
         System.out.println("lưu ý: mật mật khẩu không có kí tự đặc biệt ");
+        System.out.println("ít nhất 8 ký tự");
         String newAlbumName = huy.nextLine();
         if (createAccount.newPassword(newAlbumName)) {
             return newAlbumName;
