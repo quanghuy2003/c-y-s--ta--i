@@ -14,10 +14,9 @@ public class ImportExport {
     private static CreateAccount createAccount = new CreateAccount();
 
 
-
     public String NewAlbumName() {
 //        tạo album mới
-        System.out.println(tim+"Nhập tên của album bạn muốn tạo: ");
+        System.out.println(tim + "Nhập tên của album bạn muốn tạo: ");
         String newAlbumName = huy.nextLine();
         return newAlbumName;
     }
@@ -52,7 +51,7 @@ public class ImportExport {
         return newEditNameAlbum;
     }
 
-    public String ShowSongsInAlbum(){
+    public String ShowSongsInAlbum() {
 //        hiển thị bài hát trong album
         String showSongsInAlbum = huy.nextLine();
         return showSongsInAlbum;
@@ -61,17 +60,15 @@ public class ImportExport {
 
     public String FindAlbum() {
 //        tìm album
-        System.out.println("nhập album bạn muốn tìm: "+ANSI_RESET);
+        System.out.println("nhập album bạn muốn tìm: " + ANSI_RESET);
         String findAlbum = huy.nextLine();
         return findAlbum;
     }
 
 
-
-
     public String DeleteSong() {
 //        xóa bài hát
-        System.out.println(ANSI_BLUE+"nhập bài hát mà bạn muốn xóa: ");
+        System.out.println(ANSI_BLUE + "nhập bài hát mà bạn muốn xóa: ");
         String deleteSong = huy.nextLine();
         return deleteSong;
     }
@@ -86,7 +83,7 @@ public class ImportExport {
 
     public String EditNameSong() {
 //        sửa tên bài hát
-        System.out.println("nhập tên bài hát muốn sửa: "+ANSI_RESET);
+        System.out.println("nhập tên bài hát muốn sửa: " + ANSI_RESET);
         String editNameSong = huy.nextLine();
         return editNameSong;
     }
@@ -94,14 +91,14 @@ public class ImportExport {
 
     public String NewUserName() {
 //        tên đăng nhập mới
-        System.out.println(Do+"nhập tên tài khoản người dùng mới:");
+        System.out.println(Do + "nhập tên tài khoản người dùng mới:");
         System.out.println("lưu ý : tên là chữ cái hoặc số, không có kí tự đặc biệt");
         System.out.println("không được để khoảng trắng");
         String newSongInAlbum = huy.nextLine();
-        if (createAccount.nameLogin(newSongInAlbum) == true) {
+        if (CreateAccount.nameLogin(newSongInAlbum)) {
             return newSongInAlbum;
         }
-        return "a";
+        return " ";
     }
 
     public String NewPass() {
@@ -109,15 +106,17 @@ public class ImportExport {
         System.out.println("nhập mật khẩu mới: ");
         System.out.println("lưu ý: mật mật khẩu không có kí tự đặc biệt ");
         String newAlbumName = huy.nextLine();
-        if (createAccount.newPassword(newAlbumName) == true) {
+        if (createAccount.newPassword(newAlbumName)) {
             return newAlbumName;
-        }return "a";
+        }
+        return " ";
     }
+
     public String UserNameLogin() {
 //        đăng nhập
         System.out.println("nhập tên đăng nhập:");
         String newSongInAlbum = huy.nextLine();
-        if (createAccount.nameLogin(newSongInAlbum) == true) {
+        if (createAccount.nameLogin(newSongInAlbum)) {
             return newSongInAlbum;
         }
         return " ";
@@ -126,13 +125,15 @@ public class ImportExport {
     public String PassLogin() {
         System.out.println("nhập mật khẩu:");
         String newAlbumName = huy.nextLine();
-        if (createAccount.newPassword(newAlbumName) == true) {
+        if (createAccount.newPassword(newAlbumName)) {
             return newAlbumName;
-        }return " ";
+        }
+        return " ";
     }
+
     public String EditPass() {
 //        sửa mật khẩu
-        System.out.println("nhập mật khẩu cũ: "+ANSI_RESET);
+        System.out.println("nhập mật khẩu cũ: " + ANSI_RESET);
         String editNameAlbum = huy.nextLine();
         return editNameAlbum;
 

@@ -8,7 +8,7 @@ public class CreateAccount {
     }
 
     public static boolean nameLogin(String regex) {
-        Pattern pattern = Pattern.compile("^[A-Za-z0-9]{6}$");
+        Pattern pattern = Pattern.compile("^[A-Za-z0-9]{6,}$");
         Matcher matcher = pattern.matcher(regex);
         return matcher.matches();
     }
@@ -17,5 +17,4 @@ public class CreateAccount {
         Matcher matcher = pattern.matcher(regex);
         return matcher.matches();
     }
-
 }

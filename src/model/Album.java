@@ -9,13 +9,11 @@ public class Album {
 //    private List<Album> listSong;
     private Account account;
 
-    public Album() {
-    }
 
-    public Album(String name, List<Song> listSong, Account account) {
+    public Album(String name, List<Song> listSong) {
         this.name = name;
         this.listSong = listSong;
-        this.account = account;
+
     }
 
     public String getName() {

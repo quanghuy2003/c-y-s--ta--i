@@ -1,6 +1,5 @@
 import model.Account;
 import model.Album;
-
 import model.Song;
 import service.AccountManage;
 import service.ImportExport;
@@ -26,19 +25,19 @@ public class Main {
         ImportExport importExport = new ImportExport();
         AccountManage accountManage = new AccountManage(accountInManage);
 
-        Account account=new Account();
+        Account account = new Account();
         int choice;
         int choice1;
         int choice2;
         int choice3;
         do {
-            System.out.println(ANSI_BLUE+"+_+_+_+_+_+_+_+_+_+_+_+_+_+MENU+_+_+_+_+_+_+_+_+_+_+_+_+_+");
+            System.out.println(ANSI_BLUE + "+_+_+_+_+_+_+_+_+_+_+_+_+_+MENU+_+_+_+_+_+_+_+_+_+_+_+_+_+");
             System.out.println("||              1: Đăng ký tài khoản:                   ||");
             System.out.println("||                  2: Đăng nhập:                       ||");
             System.out.println("||                 3: Đổi mật khẩu                      ||");
             System.out.println("||                     0: Exit                          ||");
             System.out.println("+_+_+_+_+_+_+_+_++_+_+_+_+_+_+_+_++_+_+_+_+_+_+_+_++_+_+_+" + ANSI_RESET);
-            System.out.println(Vang+"                nhập lựa chọn của bạn"+ANSI_RESET);
+            System.out.println(Vang + "                nhập lựa chọn của bạn" + ANSI_RESET);
             choice = scanner.nextInt();
             switch (choice) {
                 case 1 -> {
@@ -46,14 +45,14 @@ public class Main {
                     if (accountManage.getListAccount().size() == 0) {
                         if (!account.getUserName().equals(" ") && !account.getPassword().equals(" ")) {
                             accountManage.add(account);
-                            System.out.println(Do+"Đăng ký tài khoản thành công!");
-                        } else {
+                            System.out.println(Do + "Đăng ký tài khoản thành công!");
+                         } else {
                             System.out.println("sai tên hoặc mật khẩu!!!!!!");
                         }
                     } else {
                         for (int i = 0; i < accountManage.getListAccount().size(); i++) {
                             if (accountManage.getListAccount().get(i).getUserName().equals(account.getUserName())) {
-                                System.out.println("tên đã tồn tại!!!!"+ANSI_RESET);
+                                System.out.println("tên đã tồn tại!!!!" + ANSI_RESET);
                             }
                         }
                     }
@@ -62,29 +61,54 @@ public class Main {
                     String accountName = importExport.UserNameLogin(), pass = importExport.PassLogin();
                     for (int i = 0; i < accountManage.getListAccount().size(); i++) {
                         if (accountManage.getListAccount().get(i).getUserName().equals(accountName) && accountManage.getListAccount().get(i).getPassword().equals(pass)) {
-                            System.out.println(Do+"Đăng nhập thành công"+ANSI_RESET);
+                            System.out.println(Do + "Đăng nhập thành công" + ANSI_RESET);
                         }
                         do {
-                            System.out.println(tim+"+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+Menu Album+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+");
+                            System.out.println(tim + "+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+Menu Album+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+");
                             System.out.println("||                           1: tạo album mới                             ||");
                             System.out.println("||                            2. sửa album                                ||");
                             System.out.println("||                            3. xóa album                                ||");
                             System.out.println("||                            4. tìm album                                ||");
                             System.out.println("||                            5. Show album                               ||");
-                            System.out.println("||                          6. hiển thị album                             ||");
-                            System.out.println("||       7. hiển thị danh sách album và bài hát trong album               ||");
+                            System.out.println("||                  6. hiển thị  bài hát trong album                      ||");
                             System.out.println("||                            0. đăng xuất                                ||");
-                            System.out.println("+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_++_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+"+ANSI_RESET);
-                            System.out.println(Vang+"                         nhập lựa chọn của bạn: "+ANSI_RESET);
+                            System.out.println("+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_++_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+" + ANSI_RESET);
+                            System.out.println(Vang + "                         nhập lựa chọn của bạn: " + ANSI_RESET);
                             choice1 = scanner.nextInt();
-
                                 switch (choice1) {
                                     case 1 -> {
-                                        Album album=new Album("rên",songInAlbum,account);
+                                        Scanner scanner1 = new Scanner(System.in);
+                                        System.out.println("nhập tên album");
+                                        String albumName = scanner1.nextLine();
+                                        Album album = new Album(albumName,songInAlbum);
                                         account.add(album);
                                         System.out.println("thêm thành công");
                                     }
+                                    case 2 ->{
+                                        System.out.println("nhập tên album muốn sửa");
+                                        scanner.nextLine();
+                                        String nameAlbum = scanner.nextLine();
+                                        System.out.println("bạn muốn tên của album sau khi sửa là");
+                                        String newNameAlbum = scanner.nextLine();
+                                        account.update(nameAlbum,newNameAlbum);
+                                    }
+                                    case 3 ->{
+                                        System.out.println("nhập tên album muốn xóa");
+                                        scanner.nextLine();
+                                        String deleteAlbum = scanner.nextLine();
+                                        account.delete(deleteAlbum);
+                                    }
+                                    case 4 -> {
+                                        System.out.println("nhập album bạn muốn tìm");
+                                        scanner.nextLine();
+                                        String findAlbum = scanner.nextLine();
+                                        account.findByName(findAlbum);
+                                    }
+                                    case 5 ->{
+                                        account.display();
+                                    }
                                 }
+
 
                         } while (choice != 0);
                     }
@@ -92,5 +116,4 @@ public class Main {
             }
         } while (choice != 0);
     }
-
 }
