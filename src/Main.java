@@ -11,11 +11,11 @@ public class Main {
     public static String xyzName;
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLUE = "\u001B[34m";
-//    public static final String Xanhlacay = "\u001B[32m";
-    public static final String Do = "\u001B[31m";
-    public static final String Vang = "\u001B[33m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
 //    public static final String den = "\u001B[30m";
-    public static final String tim = "\u001B[35m";
+    public static final String ANSI_VIOLET = "\u001B[35m";
 
 
     public static void main(String[] args) {
@@ -26,12 +26,12 @@ public class Main {
         int choice;
         int choice1;
         do {
-            System.out.println(ANSI_BLUE + "+_+_+_+_+_+_+_+_+_+_+_+_+_+MENU+_+_+_+_+_+_+_+_+_+_+_+_+_+");
-            System.out.println("||              1: Đăng ký tài khoản:                   ||");
-            System.out.println("||                  2: Đăng nhập:                       ||");
-            System.out.println("||                     0: Exit                          ||");
-            System.out.println("+_+_+_+_+_+_+_+_++_+_+_+_+_+_+_+_++_+_+_+_+_+_+_+_++_+_+_+" + ANSI_RESET);
-            System.out.println(Vang + "                nhập lựa chọn của bạn" + ANSI_RESET);
+            System.out.println(ANSI_GREEN + "+_+_+_+_+_+_+_+_+_+_+_+_+_+MENU+_+_+_+_+_+_+_+_+_+_+_+_+_+"+ ANSI_RESET);
+            System.out.println(ANSI_GREEN +"||"+ ANSI_RESET +"              "+ ANSI_YELLOW +"1: Đăng ký tài khoản:"+ ANSI_RESET +"                   "+ ANSI_GREEN  +"||"+ ANSI_RESET);
+            System.out.println(ANSI_GREEN +"||"+ ANSI_RESET +"                  "+ ANSI_YELLOW +"2: Đăng nhập:"+ ANSI_RESET +"                       "+ ANSI_GREEN +"||"+ ANSI_RESET);
+            System.out.println(ANSI_GREEN +"||"+ ANSI_RESET +"                     "+ ANSI_YELLOW +"0: Exit"+ ANSI_RESET +"                          "+ ANSI_GREEN +"||"+ ANSI_RESET);
+            System.out.println(ANSI_GREEN +"+_+_+_+_+_+_+_+_++_+_+_+_+_+_+_+_++_+_+_+_+_+_+_+_++_+_+_+" + ANSI_RESET);
+            System.out.println(ANSI_RED + "                nhập lựa chọn của bạn" + ANSI_RESET);
             choice = scanner.nextInt();
             switch (choice) {
                 case 1 -> {
@@ -40,7 +40,7 @@ public class Main {
                     if (AccountManage.getInstance().getListAccount().size() == 0) {
                         if (!account.getUserName().equals(" ") && !account.getPassword().equals(" ")) {
                             AccountManage.getInstance().add(account);
-                            System.out.println(Do + "Đăng ký tài khoản thành công!");
+                            System.out.println(ANSI_RED + "Đăng ký tài khoản thành công!");
 
                         } else {
                             System.out.println("sai tên hoặc mật khẩu!!!!!!");
@@ -59,22 +59,22 @@ public class Main {
                         boolean isAccTrue = AccountManage.getInstance().getListAccount().get(i).getUserName().equals(accountName) && AccountManage.getInstance().getListAccount().get(i).getPassword().equals(pass);
                         if (isAccTrue) {
                             xyzName = AccountManage.getInstance().getListAccount().get(i).getUserName();
-                            System.out.println(Do + "Đăng nhập thành công" + ANSI_RESET);
+                            System.out.println(ANSI_RED + "Đăng nhập thành công" + ANSI_RESET);
                             do {
-                                System.out.println(tim + "+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+Menu Album+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+");
-                                System.out.println("||                           1: tạo album mới                             ||");
-                                System.out.println("||                            2. sửa album                                ||");
-                                System.out.println("||                            3. xóa album                                ||");
-                                System.out.println("||                            4. tìm album                                ||");
-                                System.out.println("||                            5. Show album                               ||");
-                                System.out.println("||                      6. thêm bài hát vào album                         ||");
-                                System.out.println("||                      7. xóa bài hát khỏi album                         ||");
-                                System.out.println("||                    8. sửa tên bài hát trong album                      ||");
-                                System.out.println("||                          9: ghi từ file csv                           ||");
-                                System.out.println("||                          10: đọc từ file csv                           ||");
-                                System.out.println("||                            0. đăng xuất                                ||");
-                                System.out.println("+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_++_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+" + ANSI_RESET);
-                                System.out.println(Vang + "                         nhập lựa chọn của bạn: " + ANSI_RESET);
+                                System.out.println(ANSI_BLUE + "+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+Menu Album+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+"+ ANSI_RESET);
+                                System.out.println(ANSI_BLUE +"||"+ ANSI_RESET +"                           "+ ANSI_VIOLET +"1: tạo album mới"+ ANSI_RESET +"                             "+ ANSI_BLUE +"||"+ ANSI_RESET);
+                                System.out.println(ANSI_BLUE +"||"+ ANSI_RESET +"                            "+ ANSI_VIOLET +"2. sửa album"+ ANSI_RESET +"                                "+ ANSI_BLUE +"||"+ ANSI_RESET);
+                                System.out.println(ANSI_BLUE +"||"+ ANSI_RESET +"                            "+ ANSI_VIOLET +"3. xóa album"+ ANSI_RESET +"                                "+ ANSI_BLUE +"||"+ ANSI_RESET);
+                                System.out.println(ANSI_BLUE +"||"+ ANSI_RESET +"                            "+ ANSI_VIOLET +"4. tìm album"+ ANSI_RESET +"                                "+ ANSI_BLUE +"||"+ ANSI_RESET);
+                                System.out.println(ANSI_BLUE +"||"+ ANSI_RESET +"                            "+ ANSI_VIOLET +"5. Show album"+ ANSI_RESET +"                               "+ ANSI_BLUE +"||"+ ANSI_RESET);
+                                System.out.println(ANSI_BLUE +"||"+ ANSI_RESET +"                      "+ ANSI_VIOLET +"6. thêm bài hát vào album"+ ANSI_RESET +"                         "+ ANSI_BLUE +"||"+ ANSI_RESET);
+                                System.out.println(ANSI_BLUE +"||"+ ANSI_RESET +"                      "+ ANSI_VIOLET +"7. xóa bài hát khỏi album"+ ANSI_RESET +"                         "+ ANSI_BLUE +"||"+ ANSI_RESET);
+                                System.out.println(ANSI_BLUE +"||"+ ANSI_RESET +"                    "+ ANSI_VIOLET +"8. sửa tên bài hát trong album"+ ANSI_RESET +"                      "+ ANSI_BLUE +"||"+ ANSI_RESET);
+                                System.out.println(ANSI_BLUE +"||"+ ANSI_RESET +"                          "+ ANSI_VIOLET +"9: ghi từ file csv"+ ANSI_RESET +"                            "+ ANSI_BLUE +"||"+ ANSI_RESET);
+                                System.out.println(ANSI_BLUE +"||"+ ANSI_RESET +"                          "+ ANSI_VIOLET +"10: đọc từ file csv"+ ANSI_RESET +"                           "+ ANSI_BLUE +"||"+ ANSI_RESET);
+                                System.out.println(ANSI_BLUE +"||"+ ANSI_RESET +"                            "+ ANSI_VIOLET +"0. đăng xuất"+ ANSI_RESET +"                                "+ ANSI_BLUE +"||"+ ANSI_RESET);
+                                System.out.println(ANSI_BLUE +"+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_++_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+" + ANSI_RESET);
+                                System.out.println(ANSI_RED + "                         nhập lựa chọn của bạn: " + ANSI_RESET);
                                 choice1 = scanner.nextInt();
                                 switch (choice1) {
                                     case 1 -> {
@@ -202,7 +202,7 @@ public class Main {
                                         Account currentAccount = AccountManage.getInstance().getListAccount().get(indexUpdateNameSong);
                                         int indexOfAlbumCurrentAccount = currentAccount.findByName(updateNameSong);
                                         Album currentAlbum = currentAccount.getListAlbum().get(indexOfAlbumCurrentAccount);
-                                        System.out.println("tên album muốn sửa");
+                                        System.out.println("tên bài hát muốn sửa");
                                         String nameSong = scanner.nextLine();
                                         System.out.println("bạn muốn sửa tên bài hát đó thành gì");
                                         String updateInSong = scanner.nextLine();
